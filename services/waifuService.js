@@ -26,7 +26,7 @@ async function getLastPic() {
     // Récupération de l'URL de l'image
     const imageUrl = result.posts.post[0].$.file_url;
 
-    return { url: imageUrl };
+    return { url: imageUrl, filename: 'SPOILER_waifu.jpg'};
 }
 
 /**
@@ -55,7 +55,7 @@ async function getCustomPic(tag) {
     // On récupère la première image trouvée
     const imageUrl = result.posts.post[0].$.file_url;
 
-    return { url: imageUrl };
+    return { url: imageUrl};
 }
 
 module.exports = { getLastPic, getCustomPic };

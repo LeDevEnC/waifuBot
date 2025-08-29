@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder , AttachmentBuilder} = require('discord.js');
 const { getCustomPic } = require('../services/waifuService.js');
 
 module.exports = {
@@ -18,9 +18,13 @@ module.exports = {
             const tag = interaction.options.getString('tag'); // récupère le tag
             const waifuData = await getCustomPic(tag);
 
+            const attachment = new AttachmentBuilder(waifuData.url, { 
+                name: waifuData.filename 
+            });
+
             await interaction.editReply({
                 content: `Here’s a picture for **${tag}** ✨`,
-                files: [waifuData.url],
+                files: [attachment],
             });
         } catch (error) {
             console.error('Error fetching custom pic:', error);

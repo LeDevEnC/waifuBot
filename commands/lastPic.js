@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 const { getLastPic } = require('../services/waifuService.js');
 
 module.exports = {
@@ -11,8 +11,12 @@ module.exports = {
 
 			const waifuData = await getLastPic();
 
+			const attachment = new AttachmentBuilder(waifuData.url, { 
+                name: waifuData.filename 
+            });
+
 			await interaction.editReply({
-                files: [waifuData.url]
+                files: [attachment]
             });
 
 		} catch (error) {
