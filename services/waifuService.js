@@ -29,4 +29,33 @@ async function getLastPic() {
     return { url: imageUrl };
 }
 
-module.exports = { getLastPic };
+/**
+ * Récupère une image correspondant au tag donné (ex: zelda)
+ */
+async function getCustomPic(tag) {
+    // Encodage du tag pour l'URL
+    const encodedTag = encodeURIComponent(tag);
+
+    // Requête à l'API Rule34 avec le tag
+    const response = await fetch(
+        `https://api.rule34.xxx/index.php?page=dapi&s=post&q=index&tags=${encodedTag}&api_key=${apiKey}&user_id=${userId}&limit=1&pid=0&order=desc`
+    );
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const xml = await response.text();
+    const result = await parseStringPromise(xml);
+
+    if (!result.posts || !result.posts.post || result.posts.post.length === 0) {
+        throw new Error(`No image found for tag "${tag}"`);
+    }
+
+    // On récupère la première image trouvée
+    const imageUrl = result.posts.post[0].$.file_url;
+
+    return { url: imageUrl };
+}
+
+module.exports = { getLastPic, getCustomPic };

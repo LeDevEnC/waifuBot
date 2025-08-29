@@ -12,7 +12,6 @@ module.exports = {
 			const waifuData = await getLastPic();
 
 			await interaction.editReply({
-                content: 'Here\'s the last r34 pic for you! ✨',
                 files: [waifuData.url]
             });
 
