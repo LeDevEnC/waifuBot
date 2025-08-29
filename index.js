@@ -31,8 +31,13 @@ async function sendAutoPic() {
         }
 
         const waifuData = await getLastPic();
+
+        const attachment = new AttachmentBuilder(waifuData.url, { 
+            name: waifuData.filename 
+        });
+
         await channel.send({
-            files: [waifuData.url]
+            files: [attachment]
         });
         
         console.log(`Image automatique envoyée à ${new Date().toLocaleTimeString()}`);
