@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const cron = require('node-cron'); 
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, MessageFlags, AttachmentBuilder } = require('discord.js');
 const { token, autoChannelId } = require('./config.json');
 const { getLastPic } = require('./services/waifuService.js');
 
