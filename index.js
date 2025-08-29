@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const cron = require('node-cron'); // npm install node-cron
+const cron = require('node-cron'); 
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
 const { token, autoChannelId } = require('./config.json');
 const { getLastPic } = require('./services/waifuService.js');
@@ -83,13 +83,11 @@ client.once(Events.ClientReady, readyClient => {
         console.log('Envoi automatique programmé déclenché');
         sendAutoPic();
     }, {
-        timezone: "Europe/Paris" // Ajustez selon votre fuseau horaire
+        timezone: "Europe/Paris" 
     });
     
     console.log('Planificateur automatique activé - envoi toutes les heures à XX:00');
     
-    // Optionnel: envoyer une image de test immédiatement
-    // setTimeout(() => sendAutoPic(), 5000); // Après 5 secondes
 });
 
 client.login(token);

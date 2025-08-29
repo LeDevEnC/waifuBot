@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, AttachmentBuilder } = require('discord.js');
 const { getLastPic } = require('../services/waifuService.js');
-const fetch = require('node-fetch');
 
 module.exports = {
     data: new SlashCommandBuilder()
