@@ -14,10 +14,11 @@ module.exports = {
 			const attachment = new AttachmentBuilder(waifuData.url, { 
                 name: waifuData.filename 
             });
-
 			await interaction.editReply({
-                files: [attachment]
-            });
+				content: `||Voici la dernière waifu ||`,
+				files: [attachment]
+			});
+
 
 		} catch (error) {
             console.error('Error fetching waifu:', error);

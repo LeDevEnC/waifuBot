@@ -23,9 +23,10 @@ module.exports = {
             });
 
             await interaction.editReply({
-                content: `Here’s a picture for **${tag}** ✨`,
-                files: [attachment],
+                content: `||Voici la waifu pour ${tag}||`,
+                files: [attachment]
             });
+
         } catch (error) {
             console.error('Error fetching custom pic:', error);
             await interaction.editReply({
