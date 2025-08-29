@@ -55,7 +55,7 @@ async function getCustomPic(tag) {
     // On récupère la première image trouvée
     const imageUrl = result.posts.post[0].$.file_url;
 
-    return { url: imageUrl};
+    return { url: imageUrl, filename: 'SPOILER_waifu.jpg'};
 }
 
 module.exports = { getLastPic, getCustomPic };
